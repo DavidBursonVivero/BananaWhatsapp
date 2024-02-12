@@ -14,7 +14,7 @@ public interface UsuarioRepositoryData extends JpaRepository <Usuario, Integer> 
     public Set<Usuario> findByNombreContains(String nombre);
     public Usuario findByMensaje_Remitente(String remitente);*/
 
-    @Query("SELECT m.* FROM mensaje m WHERE m.FROM_user LIKE ?1 orm.to_user LIKE ?1")
+    @Query("SELECT m.* FROM mensaje m WHERE m.FROM_user LIKE ?1 or m.to_user LIKE ?1")
     public List <Mensaje> allMensajeByUserID (Integer id);
 
     @Query("SELECT u.nombre From usuario u JOIN usuario_mensaje um on (um.usuario_id = u.id) JOIN mensaje m on (um.mensaje_id = m.id) WHERE m.id LIKE %?1")
