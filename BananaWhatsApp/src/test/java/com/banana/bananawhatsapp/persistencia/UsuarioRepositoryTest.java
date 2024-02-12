@@ -3,6 +3,7 @@ package com.banana.bananawhatsapp.persistencia;
 import com.banana.bananawhatsapp.config.SpringConfig;
 import com.banana.bananawhatsapp.exceptions.UsuarioException;
 import com.banana.bananawhatsapp.modelos.Usuario;
+import com.banana.bananawhatsapp.persistencia.extended.MensajeRepositoryData;
 import com.banana.bananawhatsapp.persistencia.extended.UsuarioRepositoryData;
 import com.banana.bananawhatsapp.util.DBUtil;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,8 +37,6 @@ class UsuarioRepositoryTest {
     /*@Autowired
     UsuarioRepository repo;*/
 
-    /*@Autowired
-    IMensajeRepository mensajeRepository;*/
 
    @Autowired
     private UsuarioRepositoryData repo;
@@ -67,7 +66,6 @@ class UsuarioRepositoryTest {
            this.repo.save(nuevo);
         });
     }
-
     @Test
     @Order(3)
     void dadoUnUsuarioValido_cuandoActualizar_entoncesUsuarioValido() throws Exception {

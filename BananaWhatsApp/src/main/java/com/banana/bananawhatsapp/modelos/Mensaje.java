@@ -18,17 +18,17 @@ public class Mensaje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    private Usuario remitente;
+    @Column(name="from_user")
+    private  Integer remitente;
 
-    @ManyToOne
-    private Usuario destinatario;
+    @Column(name="to_user")
+    private Integer destinatario;
 
     private String cuerpo;
 
     private LocalDate fecha;
 
-    public Mensaje(Integer id, Usuario remitente, Usuario destinatario, String cuerpo, LocalDate fecha) {
+    public Mensaje(Integer id, Integer remitente, Integer destinatario, String cuerpo, LocalDate fecha) {
         this.id = id;
         this.remitente = remitente;
         this.destinatario = destinatario;
@@ -43,8 +43,8 @@ public class Mensaje {
     public boolean valido() throws MensajeException {
         if (remitente != null
                 && destinatario != null
-                && remitente.valido()
-                && destinatario.valido()
+                && remitente != null
+                && destinatario!= null
                 && cuerpo != null
                 && cuerpo.length() > 10
                 && validarFecha()
