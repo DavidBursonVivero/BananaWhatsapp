@@ -44,7 +44,7 @@ class UsuarioRepositoryTest {
 
     @BeforeEach
     void cleanAndReloadData() {
-       // DBUtil.reloadDB();
+        DBUtil.reloadDB();
     }
 
     @Test

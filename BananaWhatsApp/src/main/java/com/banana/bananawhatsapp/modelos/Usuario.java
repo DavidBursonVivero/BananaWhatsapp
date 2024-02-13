@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
@@ -23,14 +23,6 @@ public class Usuario {
     private String email;
     private LocalDate alta;
     private boolean activo;
-
-    @ManyToMany
-    @JoinTable(
-            name = "usuario_mensaje",
-            joinColumns = {@JoinColumn(name = "usuario_id")},
-            inverseJoinColumns= {@JoinColumn(name = "mensaje_id")}
-    )
-    private List<Mensaje> mensajes = new ArrayList<>();
 
     public Usuario(Integer id, String nombre, String email, LocalDate alta, boolean activo) {
         this.id = id;

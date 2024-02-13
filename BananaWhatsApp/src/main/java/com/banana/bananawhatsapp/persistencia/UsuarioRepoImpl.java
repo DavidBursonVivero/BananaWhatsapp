@@ -37,7 +37,6 @@ public class UsuarioRepoImpl implements IUsuarioRepository{
         currentUser.setEmail(usuario.getEmail());
         currentUser.setActivo(usuario.isActivo());
         currentUser.setAlta(usuario.getAlta());
-        currentUser.setMensajes(usuario.getMensajes());
 
         em.persist(currentUser);
         em.getTransaction().commit();

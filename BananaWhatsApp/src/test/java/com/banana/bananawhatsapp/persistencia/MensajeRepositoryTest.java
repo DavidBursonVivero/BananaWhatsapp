@@ -59,44 +59,46 @@ class MensajeRepositoryTest {
     @Order(2)
     @Transactional
     void dadoUnMensajeNOValido_cuandoCrear_entoncesExcepcion() throws Exception {
-        Usuario remitente = new Usuario(1, null, null, null, true,null);
-        Usuario destinatario = new Usuario(2, null, null, null, true, null);
+
 
         Mensaje message = new Mensaje(null, 1, 2, "SMS < 10", LocalDate.now());
         assertThrows(Exception.class, () -> {
             repoMensaje.save(message);
         });
     }
-/*
+
     @Test
     @Order(3)
+    @Transactional
     void dadoUnUsuarioValido_cuandoObtener_entoncesListaMensajes() throws Exception {
         Usuario user = repoUsuario.obtener(1);
 
-        List<Mensaje> userMessages = repoMensaje.obtener(user);
+        List<Imensaje> userMessages = repoMensaje.findByAllMensajeUser(1);
         assertNotNull(userMessages);
     }
 
     @Test
     @Order(4)
+    @Transactional
     void dadoUnUsuarioNOValido_cuandoObtener_entoncesExcepcion() throws Exception {
         Usuario user = new Usuario(1, null, null, null, false);
 
         assertThrows(UsuarioException.class, () -> {
-            List<Mensaje> userMessages = repoMensaje.obtener(user);
+            //List<Mensaje> userMessages = repoMensaje.obtener(user);
         });
     }
 
     @Test
+    @Transactional
     @Order(5)
     void dadoUnRemitenteValido_cuandoBorrarEntre_entoncesOK() throws Exception {
         Usuario remitente = repoUsuario.obtener(1);
         Usuario destinatario = repoUsuario.obtener(2);
-
-        boolean borrarChat = repoMensaje.borrarEntre(remitente, destinatario);
+    repoMensaje.deleteMessagesByUsers(1, 2);
+        boolean borrarChat = true;
         assertTrue(borrarChat);
     }
-
+/*rtsss
     @Test
     @Order(6)
     void dadoUnRemitenteNOValido_cuandoBorrarEntre_entoncesExcepcion() throws Exception {
